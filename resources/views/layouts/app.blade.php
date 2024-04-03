@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Outstock - Clean, Minimal eCommerce HTML5 Template </title>
+    <title>ArtHouse</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,7 +50,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                     <div class="logo">
-                        <a href="{{route('index')}}"><img src="/assets/img/logo/logo.svg" alt="logo"></a>
+                        <a href="{{route('index')}}"><img src="/assets/img/logo/logo.png"  width="125px" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8">
@@ -81,9 +81,9 @@
                             <ul>
                                 <li><a href="{{route('loginForm')}}" class="fas fa-user"> </a></li>
                                 <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> Search</a></li>
-                                <li>AZ</li>
-                                <li>EN</li>
-                                <li>RU</li>
+                                <li><a href="/az"> AZ</a></li>
+                                <li> <a href="/en">EN</a></li>
+                                <li><a href="/ru">RU</a></li>
                             </ul>
 
 
