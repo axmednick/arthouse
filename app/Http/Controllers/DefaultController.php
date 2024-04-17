@@ -35,7 +35,7 @@ class DefaultController extends Controller
         }
 
         return view('products',[
-            'products'=>$products->paginate(1)
+            'products'=>$products->paginate(12)
         ]);
     }
 
