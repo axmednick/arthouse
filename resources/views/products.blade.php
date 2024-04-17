@@ -92,7 +92,7 @@
                                 </div>
                             </div>
                             <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade" id="pills-grid" role="tabpanel"
+                                <div class="tab-pane fade active show" id="pills-grid" role="tabpanel"
                                      aria-labelledby="pills-grid-tab">
                                     <div class="row custom-row-10">
                                         @foreach($products as $product)
@@ -129,7 +129,7 @@
 
                                     </div>
                                 </div>
-                                <div class="tab-pane fade active show" id="pills-list" role="tabpanel"
+                                <div class="tab-pane fade" id="pills-list" role="tabpanel"
                                      aria-labelledby="pills-list-tab">
                                     @foreach($products as $product)
                                         <div class="product__wrapper mb-40">
