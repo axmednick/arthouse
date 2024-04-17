@@ -100,7 +100,7 @@
                                                 <div class="product__wrapper mb-60">
                                                     <div class="product__thumb">
                                                         <a href="{{route('product',$product->id)}}" class="w-img">
-                                                            <div class="productImg" style="background-image: url({{$blog->getFirstMediaUrl('image')}})"></div>
+                                                            <div class="productImg" style="background-image: url({{$product->getFirstMediaUrl('image')}})"></div>
                                                         </a>
 
                                                     </div>
