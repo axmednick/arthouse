@@ -14,7 +14,7 @@
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
                                         <li class="breadcrumb-item active" aria-current="page"> Shop</li>
                                     </ol>
                                 </nav>
@@ -51,7 +51,7 @@
                                                         <div class="categories__list">
                                                             <ul>
                                                                 @foreach($categories as $category)
-                                                                <li><a href="#">{{$category->name}}</a></li>
+                                                                <li><a href="{{route('products')}}?category={{$category->id}}">">{{$category->name}}</a></li>
                                                                 @endforeach
                                                             </ul>
                                                         </div>
