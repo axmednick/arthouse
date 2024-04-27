@@ -31,3 +31,13 @@ Route::get('/contact',[DefaultController::class,'contact'])->name('contact');
 Route::post('/create-order',[DefaultController::class,'orderCreate'])->name('orderCreate');
 
 });
+
+
+Route::get('/media',function (){
+
+    \Spatie\MediaLibrary\MediaCollections\Models\Media::all()->each(function ($collection) {
+        $collection->getMedia()->each(function ($media) {
+            $media->regenerateConversions();
+        });
+    });
+});
