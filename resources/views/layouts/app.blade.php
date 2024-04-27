@@ -60,8 +60,6 @@
                                 <ul>
                                     <li class="active "><a href="{{route('index')}}">Əsas səhifə</a> </li>
 
-
-
                                     <li class="has-dropdown"><a href="{{route('products')}}">Məhsullar</a>
                                         <ul class="submenu transition-3">
                                             @foreach($categories   as $category)
@@ -80,6 +78,44 @@
                         <div class="header__action">
                             <ul>
                                 <li><a href="{{route('loginForm')}}" class="fas fa-user"> </a></li>
+                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Cart</a>
+                                    <div class="mini-cart">
+                                        <div class="mini-cart-inner">
+                                            <ul class="mini-cart-list">
+                                                <li>
+                                                    <div class="cart-img f-left">
+                                                        <a href="product-details.html">
+                                                            <img src="assets/img/shop/product/cart-sm/16.jpg" alt="">
+                                                        </a>
+                                                    </div>
+                                                    <div class="cart-content f-left text-left">
+                                                        <h5>
+                                                            <a href="product-details.html">Consectetur adi </a>
+                                                        </h5>
+                                                        <div class="cart-price">
+                                                            <span class="ammount">1 <i class="fal fa-times"></i></span>
+                                                            <span class="price">$ 400</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="del-icon f-right mt-30">
+                                                        <a href="#">
+                                                            <i class="fal fa-times"></i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                            <div class="total-price d-flex justify-content-between mb-30">
+                                                <span>Subtotal:</span>
+                                                <span>$400.0</span>
+                                            </div>
+                                            <div class="checkout-link">
+                                                <a href="cart.html" class="os-btn">view Cart</a>
+                                                <a class="os-btn os-btn-black" href="checkout.html">Checkout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> Search</a></li>
                                 <li><a href="/az"> AZ</a></li>
                                 <li> <a href="/en">EN</a></li>
@@ -228,6 +264,74 @@
 <script src="/assets/js/imagesloaded.pkgd.min.js"></script>
 <script src="/assets/js/main.js"></script>
 </body>
+
+
+<script>
+    $(document).ready(function () {
+        $('.add-cart').on('click', function (e) {
+            e.preventDefault();
+            var productId = $(this).data('id');
+
+            $.ajax({
+                url: '/api/add-to-cart',
+                type: 'POST',
+                data: {
+                    product_id: productId
+                },
+                success: function (response) {
+                    console.log(response);
+
+
+                    $.ajax({
+                        url: '/api/get-product-details',
+                        type: 'POST',
+                        data: {
+                            product_id: productId
+                        },
+                        success: function (response) {
+
+                            updateMiniCart(response.product);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(error);
+                        }
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+
+        function updateMiniCart(product) {
+            var listItem = '<li>' +
+                '<div class="cart-img f-left">' +
+                '<a href="product-details.html">' +
+                '<img src="' + product.image + '" alt="">' +
+                '</a>' +
+                '</div>' +
+                '<div class="cart-content f-left text-left">' +
+                '<h5>' +
+                '<a href="product-details.html">' + product.name + '</a>' +
+                '</h5>' +
+                '<div class="cart-price">' +
+                '<span class="ammount">1 <i class="fal fa-times"></i></span>' +
+                '<span class="price">$' + product.price + '</span>' +
+                '</div>' +
+                '</div>' +
+                '<div class="del-icon f-right mt-30">' +
+                '<a href="#">' +
+                '<i class="fal fa-times"></i>' +
+                '</a>' +
+                '</div>' +
+                '</li>';
+
+            $('.mini-cart-list').append(listItem);
+        }
+    });
+
+</script>
 
 @yield('footer')
 

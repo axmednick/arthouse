@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductResource;
 use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Order;
@@ -65,8 +66,6 @@ class DefaultController extends Controller
     }
 
     public function orderCreate(Request $request){
-
-
         Order::create([
             'name'=>$request->name,
             'phone'=>$request->phone,
@@ -75,5 +74,29 @@ class DefaultController extends Controller
 
         return back()->with('success');
     }
+
+    public function addToCart(Request $request)
+    {
+        $productId = $request->input('product_id');
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Product added to cart',
+            'product' => Product::find($productId),
+        ])->cookie('cart_product_id', $productId, 60); // 60 dəqiqə müddəti
+    }
+    public function getProductDetails(Request $request)
+    {
+        $productId = $request->input('product_id');
+
+        $product = Product::find($productId);
+
+        return response()->json([
+            'success' => true,
+            'product' => ProductResource::make($product),
+        ]);
+    }
+
 
 }

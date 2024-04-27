@@ -5,32 +5,56 @@
         <div class="box-white grey-bg pt-50">
             <div class="container">
                 <div class="box-white-inner">
+
                     <div class="row">
                         <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col-md-2  ">
+                                    <ul>
+                                        @foreach($categories   as $category)
+                                            <li class="left-menu"><a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a></li>
+                                        @endforeach
 
-                            <!-- slider area start -->
-                            <section class="slider__area slider__area-4 p-relative">
-                                <div class="slider-active">
-                                    @foreach($sliders as $slider)
-                                    <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" data-background="{{$slider->getFirstMediaUrl('image')}}">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-xl-7 col-lg-7 col-md-9 col-sm-11 col-12">
-                                                    <div class="slider__content slider__content-4">
-                                                        <h2 data-animation="fadeInUp" data-delay=".2s">{{$slider->title}}</h2>
-                                                        <p data-animation="fadeInUp" data-delay=".4s">{{$slider->description}}</p>
-                                                        @if($slider->link)
-                                                        <a href="{{$slider->link}}" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Daha ətraflı</a>
-                                                        @endif
+
+
+
+                                    </ul>
+                                </div>
+
+                                <div class="col-md-10 col-sm-12">
+                                    <section class="slider__area slider__area-4 p-relative">
+                                        <div class="slider-active">
+
+                                            @foreach($sliders as $slider)
+                                                <div class="single-slider single-slider-2 slider__height-4 d-flex align-items-center" data-background="{{$slider->getFirstMediaUrl('image')}}">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-xl-7 col-lg-7 col-md-9 col-sm-11 col-12">
+                                                                <div class="slider__content slider__content-4">
+                                                                    <h2 data-animation="fadeInUp" data-delay=".2s">{{$slider->title}}</h2>
+                                                                    <p data-animation="fadeInUp" data-delay=".4s">{{$slider->description}}</p>
+                                                                    @if($slider->link)
+                                                                        <a href="{{$slider->link}}" class="os-btn os-btn-2" data-animation="fadeInUp" data-delay=".6s">Daha ətraflı</a>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
-                                    </div>
-                                    @endforeach
+                                    </section>
 
                                 </div>
-                            </section>
+
+                            </div>
+
+                            <!-- slider area start -->
+
+
+
+
                             <!-- slider area end -->
 
                             <!-- banner area start -->
@@ -78,7 +102,7 @@
                                                     <div class="product__wrapper mb-60">
                                                         <div class="product__thumb">
                                                             <a href="{{route('product',$product->id)}}" class="w-img">
-                                                                <div class="productImg" style="background-image: url({{$product->getFirstMediaUrl('main_image','thumb')}})"></div>
+                                                                <div class="productImg" style="background-image: url({{$product->getMedia('main_image')->first()->getUrl('thumb')}})"></div>
                                                             </a>
 
                                                         </div>
@@ -98,7 +122,9 @@
                                                                     </div>
                                                                 @endif
                                                             </div>
-
+                                                            <div class="add-cart p-absolute transition-3" data-id="{{$product->id}}">
+                                                                <a href="#">+ Add to Cart</a>
+                                                            </div>
                                                         </div>
                                                     </div>
 

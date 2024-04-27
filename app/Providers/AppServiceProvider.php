@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Slider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -32,5 +33,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('contact',$contact);
 
         View::share('categories',$categories);
+        View::share('sliders',Slider::all());
     }
 }

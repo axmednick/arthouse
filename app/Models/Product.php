@@ -25,8 +25,8 @@ class Product extends Model implements HasMedia
 
 
         $this->addMediaConversion('thumb')
-            ->width(100)
-            ->height(100)
+            ->width(70)
+            ->quality(50)
             ->optimize()
             ->performOnCollections('main', 'images');
 
