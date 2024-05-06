@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('contact',$contact);
 
         View::share('categories',$categories);
-        View::share('brands',brand::all());
+        //View::share('brands',brand::all());
         View::share('sliders',Slider::all());
     }
 }
