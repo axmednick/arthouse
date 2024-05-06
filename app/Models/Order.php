@@ -9,4 +9,9 @@ class Order extends Model
 {
     use HasFactory;
     protected $guarded=['id'];
+
+
+    public function order_products(){
+        return $this->hasMany(OrderProduct::class);
+    }
 }

@@ -57,4 +57,9 @@ class Product extends Model implements HasMedia
             return $this->price;
         }
     }
+
+
+    public function brand(){
+        return $this->belongsTo(brand::class);
+    }
 }

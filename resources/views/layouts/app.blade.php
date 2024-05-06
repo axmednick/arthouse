@@ -69,6 +69,16 @@
                                             @endforeach
                                         </ul>
                                     </li>
+                                    <li class="has-dropdown"><a style="color: #323232; cursor:pointer;" >Brendlər</a>
+                                        <ul class="submenu transition-3">
+                                            @foreach($brands   as $brand)
+                                                <li>
+                                                    <a  href="{{route('products')}}?brand={{$brand->id}}">{{$brand->name}}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+
                                     <li><a href="{{route('blogs')}}">Bloq</a></li>
                                     <li><a href="{{route('contact')}}">Contact</a></li>
                                 </ul>

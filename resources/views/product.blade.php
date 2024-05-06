@@ -69,9 +69,28 @@
                                     <span><a href="#">{{$product->category->name}}</a></span>
 
                                 </div>
-                                <div class="pro-cart-btn">
-                                    <a  class="add-cart-btn add-cart mb-20" data-id="{{$product->id}}" style="cursor: pointer">Səbətə əlavə et</a>
-                                </div>
+
+                                @php
+
+                                    $cookie_product_ids = request()->cookie('cart_product_ids');
+                                    $cookie_product_ids_array = explode('-', $cookie_product_ids);
+                                    $is_product_in_cart = in_array($product->id, $cookie_product_ids_array);
+                                @endphp
+
+
+                                @if($is_product_in_cart)
+
+                                    <div >
+                                        <a class="add-cart-btn  mb-20" data-id="{{$product->id}}" >Səbətdədir</a>
+                                    </div>
+                                @else
+                                    {{-- $product->id cookie-də mövcud deyilsə --}}
+                                    {{-- Düyməni göstərir --}}
+                                    <div>
+                                        <a class="add-cart-btn add-cart mb-20" data-id="{{$product->id}}" style="cursor: pointer">Səbətə əlavə et</a>
+                                    </div>
+                                @endif
+
 
                             </div>
                         </div>

@@ -2,31 +2,26 @@
 
 namespace App\Nova;
 
-use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
-use Kongulov\NovaTabTranslatable\NovaTabTranslatable;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Outl1ne\NovaCurrencyVatField\CurrencyVAT;
 
-class Product extends Resource
+class Brand extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Product>
+     * @var class-string<\App\Models\Brand>
      */
-    public static $model = \App\Models\Product::class;
+    public static $model = \App\Models\Brand::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -47,18 +42,7 @@ class Product extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Brand'),
-            Images::make('Main Image'),
-            Images::make('Images'),
-            Currency::make('Price'),
-            //Currency::make('Discounted Price'),
-            BelongsTo::make('Category'),
-            NovaTabTranslatable::make([
-                Text::make('Name'),
-                Text::make('Description'),
-            ]),
-
-
+            Text::make('Name')
         ];
     }
 

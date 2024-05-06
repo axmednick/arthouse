@@ -51,7 +51,37 @@
                                                         <div class="categories__list">
                                                             <ul>
                                                                 @foreach($categories as $category)
-                                                                <li><a href="{{route('products')}}?category={{$category->id}}">">{{$category->name}}</a></li>
+                                                                <li><a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="sidebar__widget mb-55">
+                                <div class="sidebar__widget-title mb-25">
+                                    <h3>Brendlər</h3>
+                                </div>
+                                <div class="sidebar__widget-content">
+                                    <div class="categories">
+                                        <div id="accordion">
+                                            <div class="card">
+                                                <div class="card-header white-bg" id="accessories">
+
+                                                </div>
+
+                                                <div id="collapseAccessories" class="collapse show"
+                                                     aria-labelledby="" data-parent="#accordion">
+                                                    <div class="card-body">
+                                                        <div class="categories__list">
+                                                            <ul>
+                                                                @foreach($brands as $brand)
+                                                                    <li><a href="{{route('products')}}?brand={{$brand->id}}">{{$brand->name}}</a></li>
                                                                 @endforeach
                                                             </ul>
                                                         </div>

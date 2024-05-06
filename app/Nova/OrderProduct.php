@@ -2,24 +2,19 @@
 
 namespace App\Nova;
 
-use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
-use Kongulov\NovaTabTranslatable\NovaTabTranslatable;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Outl1ne\NovaCurrencyVatField\CurrencyVAT;
 
-class Product extends Resource
+class OrderProduct extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Product>
+     * @var class-string<\App\Models\OrderProduct>
      */
-    public static $model = \App\Models\Product::class;
+    public static $model = \App\Models\OrderProduct::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -47,16 +42,6 @@ class Product extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Brand'),
-            Images::make('Main Image'),
-            Images::make('Images'),
-            Currency::make('Price'),
-            //Currency::make('Discounted Price'),
-            BelongsTo::make('Category'),
-            NovaTabTranslatable::make([
-                Text::make('Name'),
-                Text::make('Description'),
-            ]),
 
 
         ];

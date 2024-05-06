@@ -36,6 +36,9 @@ class DefaultController extends Controller
         if ($request->category) {
             $products->where('category_id', $request->category);
         }
+        if ($request->brand) {
+            $products->where('category_id', $request->brand);
+        }
 
         if ($request->keyword) {
             $products->where('name', 'like', '%' . $request->keyword . '%')
@@ -53,7 +56,7 @@ class DefaultController extends Controller
 
         return view('product', [
             'product' => $product,
-            'related_products' => Product::where('category_id', $product->category_id)->where('id', '<>', $id)->get()
+            'related_products' => Product::where('category_id', $product->category_id)->where('id', '<>', $id)->limit(12)->get()
         ]);
     }
 

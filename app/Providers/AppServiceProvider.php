@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\brand;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Slider;
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('contact',$contact);
 
         View::share('categories',$categories);
+        View::share('brands',brand::all());
         View::share('sliders',Slider::all());
     }
 }
