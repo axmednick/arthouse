@@ -70,7 +70,7 @@
 
                                 </div>
                                 <div class="pro-cart-btn">
-                                    <a  class="add-cart-btn mb-20" data-toggle="modal" data-target="#exampleModal">Sifariş et</a>
+                                    <a  class="add-cart-btn add-cart mb-20" data-id="{{$product->id}}" style="cursor: pointer">Səbətə əlavə et</a>
                                 </div>
 
                             </div>

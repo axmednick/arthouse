@@ -32,7 +32,7 @@
 <!-- Add your site or application content here -->
 
 <!-- prealoder area start -->
-<div id="loading">
+{{--<div id="loading">
     <div id="loading-center">
         <div id="loading-center-absolute">
             <div class="object" id="first_object"></div>
@@ -40,7 +40,7 @@
             <div class="object" id="third_object"></div>
         </div>
     </div>
-</div>
+</div>--}}
 <!-- prealoder area end -->
 
 <!-- header area start -->
@@ -50,7 +50,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4">
                     <div class="logo">
-                        <a href="{{route('index')}}"><img src="/assets/img/logo/logo.png"  width="125px" alt="logo"></a>
+                        <a href="{{route('index')}}"><img src="/assets/img/logo/logo.png" width="125px" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8">
@@ -58,12 +58,14 @@
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li class="active "><a href="{{route('index')}}">Əsas səhifə</a> </li>
+                                    <li class="active "><a href="{{route('index')}}">Əsas səhifə</a></li>
 
                                     <li class="has-dropdown"><a href="{{route('products')}}">Məhsullar</a>
                                         <ul class="submenu transition-3">
                                             @foreach($categories   as $category)
-                                            <li><a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a></li>
+                                                <li>
+                                                    <a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -76,25 +78,46 @@
                             <a href="javascript:void(0);" class="mobile-menu-toggle"><i class="fas fa-bars"></i></a>
                         </div>
                         <div class="header__action">
+
+                            @php
+                                $cartProductIds = request()->cookie('cart_product_ids');
+
+                                $arrayIds = explode('-',$cartProductIds);
+
+                              $arrayIds = array_filter($arrayIds, function($value) {
+                                  return $value !== '';
+                              });
+
+                            $cardProducts = \App\Models\Product::whereIn('id',$arrayIds)->get();
+
+
+                            @endphp
+
+
                             <ul>
                                 <li><a href="{{route('loginForm')}}" class="fas fa-user"> </a></li>
-                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Cart</a>
+                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Səbət</a>
                                     <div class="mini-cart">
                                         <div class="mini-cart-inner">
+
+
+                                            @if($arrayIds)
                                             <ul class="mini-cart-list">
-                                                <li>
+
+                                                @foreach($cardProducts as $cardProduct)
+                                                <li data-product-id="{{$cardProduct->id}}">
                                                     <div class="cart-img f-left">
-                                                        <a href="product-details.html">
-                                                            <img src="assets/img/shop/product/cart-sm/16.jpg" alt="">
+                                                        <a href="{{route('product',$cardProduct->id)}}">
+                                                            <img src="{{$cardProduct->getFirstMediaUrl('main_image','thumb')}}" alt="">
                                                         </a>
                                                     </div>
                                                     <div class="cart-content f-left text-left">
                                                         <h5>
-                                                            <a href="product-details.html">Consectetur adi </a>
+                                                            <a href="{{route('product',$cardProduct->id)}}">{{$cardProduct->name}}</a>
                                                         </h5>
                                                         <div class="cart-price">
-                                                            <span class="ammount">1 <i class="fal fa-times"></i></span>
-                                                            <span class="price">$ 400</span>
+                                                            <span class="ammount">1 <i class="fal fa-times del-icon" data-product-id="{{$cardProduct->id}}"></i></span>
+                                                            <span class="price">{{$cardProduct->price}}</span>
                                                         </div>
                                                     </div>
                                                     <div class="del-icon f-right mt-30">
@@ -103,22 +126,26 @@
                                                         </a>
                                                     </div>
                                                 </li>
+                                                @endforeach
 
                                             </ul>
-                                            <div class="total-price d-flex justify-content-between mb-30">
-                                                <span>Subtotal:</span>
-                                                <span>$400.0</span>
-                                            </div>
+
                                             <div class="checkout-link">
-                                                <a href="cart.html" class="os-btn">view Cart</a>
-                                                <a class="os-btn os-btn-black" href="checkout.html">Checkout</a>
+
+                                                <a class="os-btn os-btn-black" href="{{route('order-detail')}}">Sifariş et</a>
                                             </div>
+                                            @else
+                                                <div>
+                                                  Səbət boşdur
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> Search</a></li>
+                                <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> Search</a>
+                                </li>
                                 <li><a href="/az"> AZ</a></li>
-                                <li> <a href="/en">EN</a></li>
+                                <li><a href="/en">EN</a></li>
                                 <li><a href="/ru">RU</a></li>
                             </ul>
 
@@ -154,7 +181,9 @@
                         <div class="header__search-categories">
                             <ul class="search-category">
                                 @foreach($categories as $category)
-                                <li><a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a></li>
+                                    <li>
+                                        <a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a>
+                                    </li>
                                 @endforeach
 
 
@@ -184,17 +213,18 @@
         <!-- side-mobile-menu start -->
         <nav class="side-mobile-menu d-block d-lg-none">
             <ul id="mobile-menu-active">
-                <li class="active "><a href="{{route('index')}}">Əsas səhifə</a> </li>
+                <li class="active "><a href="{{route('index')}}">Əsas səhifə</a></li>
 
 
                 <li class="mega-menu has-dropdown"><a href="{{route('products')}}">Məhsullar</a>
                     <ul class="submenu transition-3" data-background="/assets/img/bg/mega-menu-bg.jpg">
 
-                            <ul>
-                                @foreach($categories   as $category)
-                                    <li><a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a></li>
-                                @endforeach
-                            </ul>
+                        <ul>
+                            @foreach($categories   as $category)
+                                <li><a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
 
                     </ul>
                 </li>
@@ -224,21 +254,21 @@
                         <div class="footer__social footer__social-2 f-right">
                             <ul>
                                 @if($contact->facebook)
-                                <li><a href="{{$contact->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{$contact->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
                                 @endif
 
-                                    @if($contact->instagram)
-                                        <li><a href="{{$contact->instagram}}"><i class="fab fa-instagram"></i></a></li>
-                                    @endif
-                                    @if($contact->youtube)
-                                        <li><a href="{{$contact->youtube}}"><i class="fab fa-youtube"></i></a></li>
-                                    @endif
-                                    @if($contact->whatsapp)
-                                        <li><a href="{{$contact->whatsapp}}"><i class="fab fa-whatsapp"></i></a></li>
-                                    @endif
-                                    @if($contact->linkedin)
-                                        <li><a href="{{$contact->linkedin}}"><i class="fab fa-linkedin-in"></i></a></li>
-                                    @endif
+                                @if($contact->instagram)
+                                    <li><a href="{{$contact->instagram}}"><i class="fab fa-instagram"></i></a></li>
+                                @endif
+                                @if($contact->youtube)
+                                    <li><a href="{{$contact->youtube}}"><i class="fab fa-youtube"></i></a></li>
+                                @endif
+                                @if($contact->whatsapp)
+                                    <li><a href="{{$contact->whatsapp}}"><i class="fab fa-whatsapp"></i></a></li>
+                                @endif
+                                @if($contact->linkedin)
+                                    <li><a href="{{$contact->linkedin}}"><i class="fab fa-linkedin-in"></i></a></li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -279,9 +309,6 @@
                     product_id: productId
                 },
                 success: function (response) {
-                    console.log(response);
-
-
                     $.ajax({
                         url: '/api/get-product-details',
                         type: 'POST',
@@ -289,8 +316,8 @@
                             product_id: productId
                         },
                         success: function (response) {
-
                             updateMiniCart(response.product);
+                            location.reload(); // Səhifəni yenilə
                         },
                         error: function (xhr, status, error) {
                             console.error(error);
@@ -304,8 +331,20 @@
         });
 
 
+        // Sepetten ürünü kaldırmak için işlev
+        $(document).on('click', '.del-icon', function (e) {
+            e.preventDefault();
+            var listItem = $(this).closest('li');
+            var productId = listItem.data('product-id');
+
+
+
+            listItem.remove();
+            removeProductFromCookie(productId);
+        });
+
         function updateMiniCart(product) {
-            var listItem = '<li>' +
+            var listItem = '<li data-product-id="' + product.id + '">' +
                 '<div class="cart-img f-left">' +
                 '<a href="product-details.html">' +
                 '<img src="' + product.image + '" alt="">' +
@@ -329,9 +368,38 @@
 
             $('.mini-cart-list').append(listItem);
         }
-    });
 
+        function saveProductToCookie(productId) {
+            var existingProducts = getProductsFromCookie();
+            existingProducts.push(productId);
+            var uniqueProducts = [...new Set(existingProducts)];
+            document.cookie = "cart_product_ids=" + uniqueProducts.join('-') + "; path=/";
+        }
+
+        function removeProductFromCookie(productId) {
+            var cartCookie = document.cookie.split(';').find(cookie => cookie.trim().startsWith('cart_product_ids='));
+
+            if (cartCookie) {
+                var products = cartCookie.split('=')[1].split('-');
+                var updatedProducts = products.filter(id => id !== String(productId)); // productId string formatında olduğundan emin olunmalıdır
+
+                if(updatedProducts.length > 0){
+                    document.cookie = "cart_product_ids=" + updatedProducts.join('-') + "; path=/";
+                } else {
+                    document.cookie = "cart_product_ids=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                }
+
+                location.reload(); // Səhifəni yenilə
+            }
+        }
+
+
+
+
+
+    });
 </script>
+
 
 @yield('footer')
 

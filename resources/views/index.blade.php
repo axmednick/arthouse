@@ -122,9 +122,7 @@
                                                                     </div>
                                                                 @endif
                                                             </div>
-                                                            <div class="add-cart p-absolute transition-3" data-id="{{$product->id}}">
-                                                                <a href="#">+ Add to Cart</a>
-                                                            </div>
+
                                                         </div>
                                                     </div>
 

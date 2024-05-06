@@ -30,6 +30,8 @@ Route::get('/contact',[DefaultController::class,'contact'])->name('contact');
 
 Route::post('/create-order',[DefaultController::class,'orderCreate'])->name('orderCreate');
 
+Route::get('order-detail',[DefaultController::class,'orderDetail'])->name('order-detail');
+
 });
 
 

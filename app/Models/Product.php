@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Translatable\HasTranslations;
 
 class Product extends Model implements HasMedia
@@ -31,6 +32,14 @@ class Product extends Model implements HasMedia
             ->performOnCollections('main', 'images');
 
     }
+
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(1100);
+    }
+
     public function getDiscountedPriceAttribute()
     {
 
