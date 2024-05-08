@@ -14,8 +14,8 @@
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page"> Əlaqə</li>
+                                        <li class="breadcrumb-item"><a href="{{route('index')}}">{{@trans('content.home')}}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page"> {{@trans('content.contactUs')}}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -32,14 +32,14 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-6">
                         <div class="contact__info">
-                            <h3>Bizimlə əlaqə</h3>
+                            <h3>{{@trans('content.contactUs')}}</h3>
                             <ul class="mb-55">
                                 <li class="d-flex mb-35">
                                     <div class="contact__info-icon mr-20">
                                         <i class="fal fa-map-marker-alt"></i>
                                     </div>
                                     <div class="contact__info-content">
-                                        <h6>Ünvan:</h6>
+                                        <h6>{{@trans('content.address')}}:</h6>
                                         <span>{{$contact->address}}</span>
                                     </div>
                                 </li>
@@ -48,7 +48,7 @@
                                         <i class="fal fa-envelope-open-text"></i>
                                     </div>
                                     <div class="contact__info-content">
-                                        <h6>Email:</h6>
+                                        <h6>{{@trans('content.email')}}:</h6>
                                         <span><a href="mailto:{{$contact->email}}" class="__cf_email__"
                                                  data-cfemail="36755958425755427653445358425e535b531855595b">{{$contact->email}}</a></span>
                                     </div>
@@ -58,7 +58,7 @@
                                         <i class="fal fa-phone-alt"></i>
                                     </div>
                                     <div class="contact__info-content">
-                                        <h6>Telefon</h6>
+                                        <h6>{{@trans('content.phone')}}</h6>
                                         <span>{{$contact->phone}}</span>
                                     </div>
                                 </li>
@@ -68,10 +68,7 @@
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6">
-                        <p>Outstock is a premium Templates theme with advanced admin module. It’s extremely
-                            customizable, easy to use and fully responsive and retina ready. Vel illum dolore eu feugiat
-                            nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent
-                            luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+                        <p>{{@trans('content.aboutText')}}</p>
 
                         <hr>
                         <div class="contact__social">

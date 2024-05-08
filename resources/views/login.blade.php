@@ -12,8 +12,8 @@
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page"> Login</li>
+                                        <li class="breadcrumb-item"><a href="{{route('index')}}">{{@trans('content.home')}}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page"> {{@trans('content.login')}}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -30,15 +30,15 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <div class="basic-login">
-                            <h3 class="text-center mb-60">Login From Here</h3>
+                            <h3 class="text-center mb-60">{{@trans('content.login')}}</h3>
                             <form action="{{route('login')}}" method="POST">
                                 @csrf
-                                <label for="email">Email Address <span>**</span></label>
+                                <label for="email">{{@trans('content.email')}} <span>**</span></label>
                                 <input id="email" name="email" type="text" placeholder="Email address...">
-                                <label for="pass">Password <span>**</span></label>
+                                <label for="pass">{{@trans('content.password')}} <span>**</span></label>
                                 <input id="pass" name="password" type="password" placeholder="Enter password...">
 
-                                <button class="os-btn w-100">Login Now</button>
+                                <button class="os-btn w-100">{{@trans('content.login')}}</button>
 
                             </form>
                         </div>

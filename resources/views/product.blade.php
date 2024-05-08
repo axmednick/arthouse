@@ -12,7 +12,7 @@
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="{{route('index')}}">Əsas səhifə</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('index')}}">{{@trans('content.home')}}</a></li>
                                         <li class="breadcrumb-item active" aria-current="page"> {{$product->name}}</li>
                                     </ol>
                                 </nav>
@@ -81,13 +81,13 @@
                                 @if($is_product_in_cart)
 
                                     <div >
-                                        <a class="add-cart-btn  mb-20" data-id="{{$product->id}}" >Səbətdədir</a>
+                                        <a class="add-cart-btn  mb-20" data-id="{{$product->id}}" >{{@trans('content.in_cart')}}</a>
                                     </div>
                                 @else
                                     {{-- $product->id cookie-də mövcud deyilsə --}}
                                     {{-- Düyməni göstərir --}}
                                     <div>
-                                        <a class="add-cart-btn add-cart mb-20" data-id="{{$product->id}}" style="cursor: pointer">Səbətə əlavə et</a>
+                                        <a class="add-cart-btn add-cart mb-20" data-id="{{$product->id}}" style="cursor: pointer">{{@trans('content.addToCart')}}</a>
                                     </div>
                                 @endif
 
@@ -107,10 +107,10 @@
                     <div class="col-xl-12">
                         <div class="section__title-wrapper text-center mb-55">
                             <div class="section__title mb-10">
-                                <h2>Oxşar məhsullar</h2>
+                                <h2>{{@trans('content.relatedProducts')}}</h2>
                             </div>
                             <div class="section__sub-title">
-                                <p>Mirum est notare quam littera gothica quam nunc putamus parum claram!</p>
+                                <p>{{@trans('content.relatedProductsDescription')}}</p>
                             </div>
                         </div>
                     </div>

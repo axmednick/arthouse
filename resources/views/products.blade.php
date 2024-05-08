@@ -14,8 +14,8 @@
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="{{route('index')}}">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page"> Shop</li>
+                                        <li class="breadcrumb-item"><a href="{{route('index')}}">{{@trans('content.home')}}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page"> {{@trans('products')}}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -35,7 +35,7 @@
 
                             <div class="sidebar__widget mb-55">
                                 <div class="sidebar__widget-title mb-25">
-                                    <h3>Kateqoriyalar</h3>
+                                    <h3>{{@trans('content.categories')}}</h3>
                                 </div>
                                 <div class="sidebar__widget-content">
                                     <div class="categories">
@@ -65,7 +65,7 @@
 
                             <div class="sidebar__widget mb-55">
                                 <div class="sidebar__widget-title mb-25">
-                                    <h3>Brendlər</h3>
+                                    <h3>{{@trans('content.brands')}}</h3>
                                 </div>
                                 <div class="sidebar__widget-content">
                                     <div class="categories">

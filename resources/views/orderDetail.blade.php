@@ -8,12 +8,12 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="page__title-inner text-center">
-                            <h1>Checkout</h1>
+                            <h1>{{@trans('content.order')}}</h1>
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page"> Checkout</li>
+                                        <li class="breadcrumb-item"><a href="{{route('index')}}">{{@trans('home.content')}}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page"> {{@trans('content.order')}}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -32,8 +32,8 @@
                         <div class="coupon-accordion">
                             <!-- ACCORDION START -->
                             @if(!auth()->check())
-                            <h3>Siz bizim daimi müştərimizsiz? Hesabınız varsa daxil olun və endirim əldə edin <span id="showlogin"> <a
-                                        href="{{route('loginForm')}}"> Daxil olun</a></span></h3>
+                            <h3>{{@trans('content.discountText')}}<span id="showlogin"> <a
+                                        href="{{route('loginForm')}}"> {{@trans('content.login')}}</a></span></h3>
                             @endif
 
                         </div>
@@ -60,13 +60,13 @@
 
                                     <div class="col-md-6">
                                         <div class="checkout-form-list">
-                                            <label>Adınız, Soyadınız <span class="required">*</span></label>
+                                            <label>{{@trans('content.nameSurname')}} <span class="required">*</span></label>
                                             <input name="full_name" type="text" placeholder="">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="checkout-form-list">
-                                            <label>Əlaqə nömrəniz <span class="required">*</span></label>
+                                            <label>{{@trans('content.phone')}} <span class="required">*</span></label>
                                             <input name="phone" type="text" placeholder="">
                                         </div>
                                     </div>
@@ -81,8 +81,8 @@
 
                                     <div class="order-notes">
                                         <div class="checkout-form-list">
-                                            <label>Əlavə qeyd</label>
-                                            <textarea id="checkout-mess" name="note" cols="30" rows="10" placeholder="Sifarişlə bağlı əlavə qeydlərinizi yazın"></textarea>
+                                            <label>{{trans('content.note')}}</label>
+                                            <textarea id="checkout-mess" name="note" cols="30" rows="10" placeholder="{{@trans('content.noteDescription')}}"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -90,19 +90,19 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="your-order mb-30 ">
-                                <h3>Sifariş məlumatları</h3>
+                                <h3>{{@trans('content.orderInformation')}}</h3>
                                 <div class="your-order-table table-responsive">
                                     <table>
                                         <thead>
                                         <tr>
-                                            <th class="product-name">Məhsul sayı</th>
+                                            <th class="product-name">{{@trans('content.productCount')}}</th>
                                             <th class="product-total">{{count($products)}}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr class="cart_item">
                                             <td class="product-name">
-                                                Məhsullar
+                                                {{@trans('content.products')}}
                                             </td>
                                             <td class="product-total">
                                                 @foreach($products as $product)
@@ -116,7 +116,7 @@
 
 
                                         <tr class="order-total">
-                                            <th>Cəmi</th>
+                                            <th>{{@trans('content.total')}}</th>
                                             <td><strong><span class="amount">{{$totalPrice}} ₼</span></strong>
                                             </td>
                                         </tr>
@@ -127,7 +127,7 @@
                                 <div class="payment-method">
 
                                     <div class="order-button-payment mt-20">
-                                        <button type="submit" class="os-btn os-btn-black">Sifarişi təsdiqlə</button>
+                                        <button type="submit" class="os-btn os-btn-black">{{@trans('content.orderConfirmation')}}</button>
                                     </div>
                                 </div>
                             </div>

@@ -58,9 +58,9 @@
                         <div class="main-menu d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li class="active "><a href="{{route('index')}}">Əsas səhifə</a></li>
+                                    <li class="active "><a href="{{route('index')}}">{{@trans('content.home')}}</a></li>
 
-                                    <li class="has-dropdown"><a href="{{route('products')}}">Məhsullar</a>
+                                    <li class="has-dropdown"><a href="{{route('products')}}">{{@trans('content.products')}}</a>
                                         <ul class="submenu transition-3">
                                             @foreach($categories   as $category)
                                                 <li>
@@ -69,7 +69,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown"><a style="color: #323232; cursor:pointer;" >Brendlər</a>
+                                    <li class="has-dropdown"><a style="color: #323232; cursor:pointer;" >{{@trans('content.brands')}}</a>
                                         <ul class="submenu transition-3">
                                             @foreach($brands   as $brand)
                                                 <li>
@@ -79,8 +79,8 @@
                                         </ul>
                                     </li>
 
-                                    <li><a href="{{route('blogs')}}">Bloq</a></li>
-                                    <li><a href="{{route('contact')}}">Contact</a></li>
+                                    <li><a href="{{route('blogs')}}">{{@trans('content.blog')}}</a></li>
+                                    <li><a href="{{route('contact')}}">{{@trans('content.contactUs')}}</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -106,7 +106,7 @@
 
                             <ul>
                                 <li><a href="{{route('loginForm')}}" class="fas fa-user"> </a></li>
-                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> Səbət</a>
+                                <li><a href="javascript:void(0);" class="cart"><i class="ion-bag"></i> {{@trans('content.cart')}}</a>
                                     <div class="mini-cart">
                                         <div class="mini-cart-inner">
 
@@ -142,17 +142,17 @@
 
                                             <div class="checkout-link">
 
-                                                <a class="os-btn os-btn-black" href="{{route('order-detail')}}">Sifariş et</a>
+                                                <a class="os-btn os-btn-black" href="{{route('order-detail')}}">{{@trans('content.order')}}</a>
                                             </div>
                                             @else
                                                 <div>
-                                                  Səbət boşdur
+                                                  {{@trans('content.cartEmpty')}}
                                                 </div>
                                             @endif
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> Search</a>
+                                <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> {{@trans('content.search')}}</a>
                                 </li>
                                 <li><a href="/az"> AZ</a></li>
                                 <li><a href="/en">EN</a></li>
@@ -238,8 +238,8 @@
 
                     </ul>
                 </li>
-                <li><a href="{{route('blogs')}}">Bloq</a></li>
-                <li><a href="{{route('contact')}}">Contact</a></li>
+                <li><a href="{{route('blogs')}}">{{@trans('content.blog')}}</a></li>
+                <li><a href="{{route('contact')}}">{{@trans('content.contact')}}</a></li>
             </ul>
         </nav>
         <!-- side-mobile-menu end -->

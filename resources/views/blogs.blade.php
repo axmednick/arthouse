@@ -8,12 +8,12 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="page__title-inner text-center">
-                            <h1>News &amp; Blog</h1>
+                            <h1>{{@trans('content.blog')}}</h1>
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page"> Blog 2 Column</li>
+                                        <li class="breadcrumb-item"><a href="{{route('index')}}">{{@trans('content.home')}}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{@trans('content.blog')}}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -45,7 +45,7 @@
                                     <p>
                                         {{$blog->description}}
                                     </p>
-                                    <a href="{{route('blog',$blog->id)}}" class="os-btn">read more</a>
+                                    <a href="{{route('blog',$blog->id)}}" class="os-btn">{{@trans('content.readMore')}}</a>
                                 </div>
                             </div>
 
