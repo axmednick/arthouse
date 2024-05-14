@@ -9,6 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $translatable=['name','slug'];
+
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');
