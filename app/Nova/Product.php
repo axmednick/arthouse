@@ -51,6 +51,7 @@ class Product extends Resource
             Images::make('Main Image'),
             Images::make('Images'),
             Currency::make('Price'),
+            Text::make('Product Code'),
             //Currency::make('Discounted Price'),
             BelongsTo::make('Category'),
             NovaTabTranslatable::make([

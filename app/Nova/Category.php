@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Kongulov\NovaTabTranslatable\NovaTabTranslatable;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Slug;
@@ -44,8 +45,11 @@ class Category extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Name'),
-            Slug::make('Slug')->from('name'),
+            NovaTabTranslatable::make([
+                Text::make('Name'),
+                Slug::make('Slug')->from('name'),
+            ])
+
         ];
     }
 
