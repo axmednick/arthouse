@@ -29,6 +29,7 @@
             <div class="shop__top grey-bg-6 pt-100 pb-90">
                 <div class="container">
                     <div class="row">
+                        @if(count($product->getMedia('images')) == 0)
                         <div class="col-xl-6 col-lg-6">
                             <div class="product__modal-box d-flex">
                                 <div class="product__modal-nav mr-20">
@@ -44,6 +45,42 @@
                                 </div>
                             </div>
                         </div>
+
+                        @else
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="product__modal-box d-flex">
+                                    <div class="product__modal-nav mr-20">
+                                        <nav>
+                                            <div class="nav nav-tabs" id="product-details" role="tablist">
+
+                                                @foreach($product->getMedia('images') as $image)
+                                                    <a class="nav-item nav-link {{$loop->iteration==1 ? 'active' : ''}}" id="pro-{{$image->id}}-tab" data-toggle="tab" href="#pro-{{$image->id}}" role="tab" aria-controls="pro-{{$image->id}}" aria-selected="true">
+                                                        <div class="product__nav-img w-img">
+                                                            <img src="{{$image->getUrl()}}" alt="">
+                                                        </div>
+                                                    </a>
+                                                @endforeach
+                                            </div>
+                                        </nav>
+                                    </div>
+                                    <div class="tab-content mb-20" id="product-detailsContent">
+                                        @foreach($product->getMedia('images') as $image)
+                                            <div class="tab-pane fade {{$loop->iteration==1 ? 'show active' : ''}}" id="pro-{{$image->id}}" role="tabpanel" aria-labelledby="pro-{{$image->id}}-tab">
+                                                <div class="product__modal-img product__thumb w-img">
+                                                    <img src="{{$image->getUrl()}}" alt="">
+                                                    <div class="product__sale ">
+                                                        <span class="new">new</span>
+                                                        <span class="percent">-16%</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        @endif
                         <div class="col-xl-6 col-lg-6">
                             <div class="product__modal-content product__modal-content-2">
                                 <h4><a >{{$product->name}}</a></h4>
