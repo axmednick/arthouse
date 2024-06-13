@@ -55,7 +55,7 @@
 
                                                 @foreach($product->getMedia('images') as $image)
                                                     <a class="nav-item nav-link {{$loop->iteration==1 ? 'active' : ''}}" id="pro-{{$image->id}}-tab" data-toggle="tab" href="#pro-{{$image->id}}" role="tab" aria-controls="pro-{{$image->id}}" aria-selected="true">
-                                                        <div class="product__nav-img w-img">
+                                                        <div class="product__nav-img w-img" style="width: 150px">
                                                             <img src="{{$image->getUrl()}}" alt="">
                                                         </div>
                                                     </a>
@@ -68,10 +68,7 @@
                                             <div class="tab-pane fade {{$loop->iteration==1 ? 'show active' : ''}}" id="pro-{{$image->id}}" role="tabpanel" aria-labelledby="pro-{{$image->id}}-tab">
                                                 <div class="product__modal-img product__thumb w-img">
                                                     <img src="{{$image->getUrl()}}" alt="">
-                                                    <div class="product__sale ">
-                                                        <span class="new">new</span>
-                                                        <span class="percent">-16%</span>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         @endforeach
@@ -103,7 +100,10 @@
 
                                 <div class="product__tag mb-25">
                                     <span>Category:</span>
-                                    <span><a href="#">{{$product->category->name}}</a></span>
+                                    <span>{{$product->category->name}}</a></span>
+
+                                    <span>Məhsul kodu:</span>
+                                    <span>{{$product->product_code}}</a></span>
 
                                 </div>
 
