@@ -37,7 +37,7 @@ class DefaultController extends Controller
             $products->where('category_id', $request->category);
         }
         if ($request->brand) {
-            $products->where('category_id', $request->brand);
+            $products->where('brand_id', $request->brand);
         }
 
         if ($request->keyword) {
