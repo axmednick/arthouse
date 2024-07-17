@@ -14,8 +14,10 @@
                             <div class="page__title-breadcrumb">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb justify-content-center">
-                                        <li class="breadcrumb-item"><a href="{{route('index')}}">{{@trans('content.home')}}</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page"> {{@trans('products')}}</li>
+                                        <li class="breadcrumb-item"><a
+                                                href="{{route('index')}}">{{@trans('content.home')}}</a></li>
+                                        <li class="breadcrumb-item active"
+                                            aria-current="page"> {{@trans('products')}}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -51,7 +53,9 @@
                                                         <div class="categories__list">
                                                             <ul>
                                                                 @foreach($categories as $category)
-                                                                <li><a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a></li>
+                                                                    <li>
+                                                                        <a href="{{route('products')}}?category={{$category->id}}">{{$category->name}}</a>
+                                                                    </li>
                                                                 @endforeach
                                                             </ul>
                                                         </div>
@@ -81,7 +85,9 @@
                                                         <div class="categories__list">
                                                             <ul>
                                                                 @foreach($brands as $brand)
-                                                                    <li><a href="{{route('products')}}?brand={{$brand->id}}">{{$brand->name}}</a></li>
+                                                                    <li>
+                                                                        <a href="{{route('products')}}?brand={{$brand->id}}">{{$brand->name}}</a>
+                                                                    </li>
                                                                 @endforeach
                                                             </ul>
                                                         </div>
@@ -130,25 +136,30 @@
                                                 <div class="product__wrapper mb-60">
                                                     <div class="product__thumb">
                                                         <a href="{{route('product',$product->id)}}" class="w-img">
-                                                            <div class="productImg" style="background-image: url({{$product->getFirstMediaUrl('main_image')}})"></div>
+                                                            <div class="productImg"
+                                                                 style="background-image: url({{$product->getFirstMediaUrl('main_image')}})"></div>
                                                         </a>
 
                                                     </div>
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner">
-                                                            <h4><a href="{{route('product',$product->id)}}">{{$product->name}}</a>
+                                                            <h4>
+                                                                <a href="{{route('product',$product->id)}}">{{$product->name}}</a>
                                                             </h4>
                                                             @if(auth()->check() && auth()->user()->discount_percent!=0)
 
                                                                 <div class="product__price-2 mb-25">
                                                                     <span>{{$product->discounted_price}}</span>
+
                                                                     <span class="old-price">{{$product->price}}</span>
                                                                 </div>
                                                             @else
-                                                                <div class="product__price-2 mb-25">
-                                                                    <span>{{$product->price}}</span>
+                                                                @if($product->price)
+                                                                    <div class="product__price-2 mb-25">
+                                                                        <span>{{$product->price}}</span>
 
-                                                                </div>
+                                                                    </div>
+                                                                @endif
                                                             @endif
                                                         </div>
 
@@ -167,7 +178,8 @@
                                                 <div class="col-xl-4 col-lg-4">
                                                     <div class="product__thumb">
                                                         <a href="{{route('product',$product->id)}}" class="w-img">
-                                                            <div class="productImg" style="background-image: url({{$product->getFirstMediaUrl('main_image','thumb')}})"></div>
+                                                            <div class="productImg"
+                                                                 style="background-image: url({{$product->getFirstMediaUrl('main_image','thumb')}})"></div>
                                                         </a>
 
                                                     </div>
@@ -175,7 +187,8 @@
                                                 <div class="col-xl-8 col-lg-8">
                                                     <div class="product__content p-relative">
                                                         <div class="product__content-inner list">
-                                                            <h4><a href="{{route('product',$product->id)}}">{{$product->name}}</a>
+                                                            <h4>
+                                                                <a href="{{route('product',$product->id)}}">{{$product->name}}</a>
                                                             </h4>
                                                             @if(auth()->check() && auth()->user()->discount_percent!=0)
 
@@ -184,10 +197,12 @@
                                                                     <span class="old-price">{{$product->price}} ₼</span>
                                                                 </div>
                                                             @else
-                                                                <div class="product__price-2 mb-25">
-                                                                    <span>{{$product->price}} ₼</span>
+                                                                @if($product->price)
+                                                                    <div class="product__price-2 mb-25">
+                                                                        <span>{{$product->price}} ₼</span>
 
-                                                                </div>
+                                                                    </div>
+                                                                @endif
                                                             @endif
                                                             <p>{{$product->description}}</p>
 
