@@ -154,9 +154,22 @@
                                 </li>
                                 <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> {{@trans('content.search')}}</a>
                                 </li>
-                                <li><a href="/az"> AZ</a></li>
-                                <li><a href="/en">EN</a></li>
-                                <li><a href="/ru">RU</a></li>
+
+                                <li>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            {{\Illuminate\Support\Str::upper(app()->getLocale())}}
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="languageDropdown">
+                                            <a class="dropdown-item" href="/az">AZ</a>
+                                            <a class="dropdown-item" href="/en">EN</a>
+                                            <a class="dropdown-item" href="/ru">RU</a>
+                                        </div>
+                                    </div>
+
+                                </li>
+
+
                             </ul>
 
 
