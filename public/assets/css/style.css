@@ -3042,6 +3042,7 @@ p {
     font-weight: 400;
     color: #444;
     margin-bottom: 3px;
+    text-align: center;
 }
 .product__content h4 a:hover {
     color: #bc8246;
@@ -5912,7 +5913,7 @@ p.checkout-coupon input[type=text] {
 }
 .productImg{
     height: 260px;
-    width: 400px;
+    width: 100%;
     background-size: cover;
     background-position: center;
 }
