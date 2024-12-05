@@ -155,6 +155,7 @@
                                 <li><a href="#" class="search-toggle"><i class="ion-ios-search-strong"></i> {{@trans('content.search')}}</a>
                                 </li>
 
+
                                 <li>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
